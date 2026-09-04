@@ -1,0 +1,27 @@
+name: Validate EUC ROVER
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm test
+      - run: npm run build
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+          SITE_URL: https://example.invalid
+          SITE_BASE: /euc-rover/
+      - run: node scripts/verify-output.mjs dist /euc-rover/
+      # No deployment step. Publishing is a separate, later implementation gate.
