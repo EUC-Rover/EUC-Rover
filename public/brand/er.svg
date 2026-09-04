@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1254" height="1254"
+     viewBox="0 0 1254 1254" role="img" aria-labelledby="title desc">
+  <title id="title">EUC ROVER — ER monograma</title>
+  <desc id="desc">Pasirinktos persidengiančių E ir R raidžių kompozicijos vektorinė versija.
+  Kontūrai atkurti pagal pasirinktą eskizą. Firminės spalvos: #111217, #FDF2EC ir #F16305.
+  Trys atskiri vektoriniai objektai; nėra šriftų, įterptų rastrų ar išorinių išteklių.</desc>
+  <rect id="background" width="1254" height="1254" fill="#111217"/>
+  <path id="letter-r" fill="#F16305" d="M 811.5 508.88
+       C 813.41 506.44 814.68 507.06 817.5 506.91
+       C 891.79 503.68 1022.13 511.32 1025 611.5
+       C 1022.03 696.47 951.36 765.78 873.56 790.5
+       L 972.5 974.73
+       L 796.5 974.95
+       L 713.5 817.66
+       L 550.5 817.49
+       L 484.42 974.5
+       L 337.58 974.5
+       L 419.5 779.86
+       L 498.5 779.77
+       L 595.5 697.76
+       L 802.5 697.69
+       C 830.3 697.2 858.66 679.11 860.73 649.5
+       C 859.9 626.42 836.87 623.26 818.5 623.03
+       L 525.97 625.5
+       L 536.5 601.16
+       L 695.5 600.94
+       Z"/>
+  <path id="letter-e" fill="#FDF2EC" d="M 387.6 302.26 L 958.72 302.29 L 783.58 440.44 L 485.98 440.44 L 465.64 480.38 L 841.23 480.36 L 695.03 594.88 L 413.25 594.88 L 389.8 640.06 L 665.79 637.02 L 491.62 775.71 L 148.47 775.77 Z"/>
+</svg>
