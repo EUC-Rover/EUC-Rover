@@ -1,0 +1,20 @@
+node_modules/
+dist/
+dist-demo/
+.astro/
+.env
+.env.*
+!.env.example
+.DS_Store
+test-results/
+playwright-report/
+.openai/*.log
+.openai/*.jsonl
+# Source analysis and private audit files must never enter this repository.
+*.gpx
+*.csv
+*.fit
+*.tcx
+**/RAW/**
+**/RED/**
+**/private/**
