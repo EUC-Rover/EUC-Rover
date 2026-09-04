@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "post",
+        "trip"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "const": "published"
+    },
+    "demo": {
+      "default": false,
+      "type": "boolean"
+    },
+    "publishedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+    },
+    "trip": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "end": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "timezone": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "start",
+        "timezone"
+      ],
+      "additionalProperties": false
+    },
+    "categoryIds": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      }
+    },
+    "tagIds": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      }
+    },
+    "metrics": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "label": {
+            "type": "object",
+            "properties": {
+              "lt": {
+                "type": "string",
+                "minLength": 1
+              },
+              "en": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "lt",
+              "en"
+            ],
+            "additionalProperties": false
+          },
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "km",
+              "m",
+              "h",
+              "min",
+              "km/h",
+              "Wh",
+              "Wh/km",
+              "%",
+              "°C"
+            ]
+          },
+          "decimals": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2
+          },
+          "priority": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "value",
+          "unit",
+          "decimals",
+          "priority"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "lt": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    "en": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "body"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "id",
+    "slug",
+    "type",
+    "status",
+    "demo",
+    "publishedAt",
+    "categoryIds",
+    "tagIds",
+    "metrics",
+    "lt",
+    "en"
+  ],
+  "additionalProperties": false
+}
