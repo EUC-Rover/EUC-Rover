@@ -1,0 +1,566 @@
+{
+  "date": "2026-09-03",
+  "environment": "Chrome in controlled browser; same-origin iframe viewport fixture; no physical device tests",
+  "checks": [
+    {
+      "page": "LT · pradžia",
+      "viewport": 320,
+      "text": 100,
+      "font": "16px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 305,
+      "width": 305
+    },
+    {
+      "page": "LT · pradžia",
+      "viewport": 320,
+      "text": 200,
+      "font": "32px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 305,
+      "width": 305
+    },
+    {
+      "page": "LT · pradžia",
+      "viewport": 390,
+      "text": 100,
+      "font": "16px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "page": "LT · pradžia",
+      "viewport": 390,
+      "text": 200,
+      "font": "32px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "page": "LT · pradžia",
+      "viewport": 568,
+      "text": 100,
+      "font": "16px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 553,
+      "width": 553
+    },
+    {
+      "page": "LT · pradžia",
+      "viewport": 568,
+      "text": 200,
+      "font": "32px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 553,
+      "width": 553
+    },
+    {
+      "page": "LT · pradžia",
+      "viewport": 768,
+      "text": 100,
+      "font": "16px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 753,
+      "width": 753
+    },
+    {
+      "page": "LT · pradžia",
+      "viewport": 768,
+      "text": 200,
+      "font": "32px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 753,
+      "width": 753
+    },
+    {
+      "page": "LT · pradžia",
+      "viewport": 1024,
+      "text": 100,
+      "font": "16px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 1009,
+      "width": 1009
+    },
+    {
+      "page": "LT · pradžia",
+      "viewport": 1024,
+      "text": 200,
+      "font": "32px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 1009,
+      "width": 1009
+    },
+    {
+      "page": "LT · pradžia",
+      "viewport": 1280,
+      "text": 100,
+      "font": "16px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 1265,
+      "width": 1265
+    },
+    {
+      "page": "LT · pradžia",
+      "viewport": 1280,
+      "text": 200,
+      "font": "32px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 1265,
+      "width": 1265
+    },
+    {
+      "page": "LT · pradžia",
+      "viewport": 1440,
+      "text": 100,
+      "font": "16px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 1425,
+      "width": 1425
+    },
+    {
+      "page": "LT · pradžia",
+      "viewport": 1440,
+      "text": 200,
+      "font": "32px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 1425,
+      "width": 1425
+    },
+    {
+      "page": "LT · kelionė",
+      "viewport": 320,
+      "text": 100,
+      "font": "16px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 305,
+      "width": 305
+    },
+    {
+      "page": "LT · kelionė",
+      "viewport": 320,
+      "text": 200,
+      "font": "32px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 305,
+      "width": 305
+    },
+    {
+      "page": "LT · kelionė",
+      "viewport": 390,
+      "text": 100,
+      "font": "16px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "page": "LT · kelionė",
+      "viewport": 390,
+      "text": 200,
+      "font": "32px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "page": "LT · kelionė",
+      "viewport": 568,
+      "text": 100,
+      "font": "16px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 553,
+      "width": 553
+    },
+    {
+      "page": "LT · kelionė",
+      "viewport": 568,
+      "text": 200,
+      "font": "32px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 553,
+      "width": 553
+    },
+    {
+      "page": "LT · kelionė",
+      "viewport": 768,
+      "text": 100,
+      "font": "16px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 753,
+      "width": 753
+    },
+    {
+      "page": "LT · kelionė",
+      "viewport": 768,
+      "text": 200,
+      "font": "32px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 753,
+      "width": 753
+    },
+    {
+      "page": "LT · kelionė",
+      "viewport": 1024,
+      "text": 100,
+      "font": "16px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 1009,
+      "width": 1009
+    },
+    {
+      "page": "LT · kelionė",
+      "viewport": 1024,
+      "text": 200,
+      "font": "32px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 1009,
+      "width": 1009
+    },
+    {
+      "page": "LT · kelionė",
+      "viewport": 1280,
+      "text": 100,
+      "font": "16px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 1265,
+      "width": 1265
+    },
+    {
+      "page": "LT · kelionė",
+      "viewport": 1280,
+      "text": 200,
+      "font": "32px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 1265,
+      "width": 1265
+    },
+    {
+      "page": "LT · kelionė",
+      "viewport": 1440,
+      "text": 100,
+      "font": "16px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 1425,
+      "width": 1425
+    },
+    {
+      "page": "LT · kelionė",
+      "viewport": 1440,
+      "text": 200,
+      "font": "32px",
+      "lang": "lt",
+      "overflow": [],
+      "scroll": 1425,
+      "width": 1425
+    },
+    {
+      "page": "EN · home",
+      "viewport": 320,
+      "text": 100,
+      "font": "16px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 305,
+      "width": 305
+    },
+    {
+      "page": "EN · home",
+      "viewport": 320,
+      "text": 200,
+      "font": "32px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 305,
+      "width": 305
+    },
+    {
+      "page": "EN · home",
+      "viewport": 390,
+      "text": 100,
+      "font": "16px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "page": "EN · home",
+      "viewport": 390,
+      "text": 200,
+      "font": "32px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "page": "EN · home",
+      "viewport": 568,
+      "text": 100,
+      "font": "16px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 553,
+      "width": 553
+    },
+    {
+      "page": "EN · home",
+      "viewport": 568,
+      "text": 200,
+      "font": "32px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 553,
+      "width": 553
+    },
+    {
+      "page": "EN · home",
+      "viewport": 768,
+      "text": 100,
+      "font": "16px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 753,
+      "width": 753
+    },
+    {
+      "page": "EN · home",
+      "viewport": 768,
+      "text": 200,
+      "font": "32px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 753,
+      "width": 753
+    },
+    {
+      "page": "EN · home",
+      "viewport": 1024,
+      "text": 100,
+      "font": "16px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 1009,
+      "width": 1009
+    },
+    {
+      "page": "EN · home",
+      "viewport": 1024,
+      "text": 200,
+      "font": "32px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 1009,
+      "width": 1009
+    },
+    {
+      "page": "EN · home",
+      "viewport": 1280,
+      "text": 100,
+      "font": "16px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 1265,
+      "width": 1265
+    },
+    {
+      "page": "EN · home",
+      "viewport": 1280,
+      "text": 200,
+      "font": "32px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 1265,
+      "width": 1265
+    },
+    {
+      "page": "EN · home",
+      "viewport": 1440,
+      "text": 100,
+      "font": "16px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 1425,
+      "width": 1425
+    },
+    {
+      "page": "EN · home",
+      "viewport": 1440,
+      "text": 200,
+      "font": "32px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 1425,
+      "width": 1425
+    },
+    {
+      "page": "EN · trip",
+      "viewport": 320,
+      "text": 100,
+      "font": "16px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 305,
+      "width": 305
+    },
+    {
+      "page": "EN · trip",
+      "viewport": 320,
+      "text": 200,
+      "font": "32px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 305,
+      "width": 305
+    },
+    {
+      "page": "EN · trip",
+      "viewport": 390,
+      "text": 100,
+      "font": "16px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "page": "EN · trip",
+      "viewport": 390,
+      "text": 200,
+      "font": "32px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "page": "EN · trip",
+      "viewport": 568,
+      "text": 100,
+      "font": "16px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 553,
+      "width": 553
+    },
+    {
+      "page": "EN · trip",
+      "viewport": 568,
+      "text": 200,
+      "font": "32px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 553,
+      "width": 553
+    },
+    {
+      "page": "EN · trip",
+      "viewport": 768,
+      "text": 100,
+      "font": "16px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 753,
+      "width": 753
+    },
+    {
+      "page": "EN · trip",
+      "viewport": 768,
+      "text": 200,
+      "font": "32px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 753,
+      "width": 753
+    },
+    {
+      "page": "EN · trip",
+      "viewport": 1024,
+      "text": 100,
+      "font": "16px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 1009,
+      "width": 1009
+    },
+    {
+      "page": "EN · trip",
+      "viewport": 1024,
+      "text": 200,
+      "font": "32px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 1009,
+      "width": 1009
+    },
+    {
+      "page": "EN · trip",
+      "viewport": 1280,
+      "text": 100,
+      "font": "16px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 1265,
+      "width": 1265
+    },
+    {
+      "page": "EN · trip",
+      "viewport": 1280,
+      "text": 200,
+      "font": "32px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 1265,
+      "width": 1265
+    },
+    {
+      "page": "EN · trip",
+      "viewport": 1440,
+      "text": 100,
+      "font": "16px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 1425,
+      "width": 1425
+    },
+    {
+      "page": "EN · trip",
+      "viewport": 1440,
+      "text": 200,
+      "font": "32px",
+      "lang": "en",
+      "overflow": [],
+      "scroll": 1425,
+      "width": 1425
+    }
+  ]
+}
