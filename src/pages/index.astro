@@ -1,0 +1,16 @@
+---
+import { asset, pageUrl } from '../lib/site';
+import '../styles/global.css';
+---
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="robots" content="noindex,follow"/><meta name="theme-color" content="#111217"/><title>EUC ROVER — LT / EN</title><link rel="icon" href={asset('brand/er.svg')} type="image/svg+xml"/></head>
+<body><main class="language-entry"><img src={asset('brand/er.svg')} width="88" height="88" alt="EUC ROVER"/><h1>EUC ROVER</h1><nav aria-label="Choose language / Pasirink kalbą"><a class="button button--primary" href={pageUrl('lt')} lang="lt" data-language-link="lt">Lietuviškai</a><a class="button button--outline" href={pageUrl('en')} lang="en" data-language-link="en">English</a></nav></main>
+<script>
+  import { chooseLanguage } from '../lib/language.mjs';
+  // Only the language-neutral entry route performs automatic selection.
+  let stored = null;
+  try { stored = localStorage.getItem('euc-rover:language:v1'); } catch { /* Fall back to browser preferences. */ }
+  const selected = chooseLanguage(stored, [...(navigator.languages || [navigator.language])]);
+  const target = document.querySelector<HTMLAnchorElement>(`[data-language-link="${selected || 'en'}"]`);
+  if (target) location.replace(target.href);
+</script></body></html>

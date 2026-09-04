@@ -1,0 +1,46 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { ui, type Lang, type View } from '../i18n/ui';
+import { demoMode, clientCatalog, asset } from '../lib/site';
+import '../styles/global.css';
+import { existsSync } from 'node:fs';
+interface Props { lang: Lang; title: string; description?: string; view?: View; alternate: string; articleId?: string }
+const { lang, title, description = ui[lang].intro, view = 'home', alternate, articleId } = Astro.props;
+const t = ui[lang];
+const configured = !!Astro.site && Astro.site.hostname !== 'example.invalid';
+const indexable = configured && !demoMode && view !== 'search' && view !== 'saved' && !/\/404(?:\/|\.html)?$/.test(Astro.url.pathname);
+const canonical = configured ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const json = JSON.stringify({ lang, base: import.meta.env.BASE_URL, demo: demoMode, usePagefind: !import.meta.env.DEV || existsSync('dist-demo/pagefind/pagefind.js'), ui: t, catalog: clientCatalog(lang) }).replace(/</g, '\\u003c');
+const fontCss = [['Regular', 400], ['SemiBold', 600], ['Bold', 700]].map(([name, weight]) => `@font-face{font-family:Montserrat;src:url('${asset(`fonts/Montserrat-${name}.woff2`)}') format('woff2');font-style:normal;font-weight:${weight};font-display:swap}`).join('');
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#111217" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={indexable ? 'index,follow' : 'noindex,nofollow'} />
+    <title>{title === 'EUC ROVER' ? title : `${title} · EUC ROVER`}</title>
+    <link rel="icon" href={asset('brand/er.svg')} type="image/svg+xml" />
+    <link rel="preload" href={asset('fonts/Montserrat-Regular.woff2')} as="font" type="font/woff2" crossorigin />
+    <style is:inline set:html={fontCss} />
+    {canonical && <><link rel="canonical" href={canonical} /><link rel="alternate" hreflang={lang} href={canonical} /><link rel="alternate" hreflang={lang === 'lt' ? 'en' : 'lt'} href={new URL(alternate, Astro.site)} /><link rel="alternate" hreflang="x-default" href={lang === 'en' ? canonical : new URL(alternate, Astro.site)} /><meta property="og:url" content={canonical} /></>}
+    <meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:site_name" content="EUC ROVER" /><meta property="og:type" content={articleId ? 'article' : 'website'} /><meta property="og:locale" content={lang === 'lt' ? 'lt_LT' : 'en_GB'} />
+    {articleId && <meta data-pagefind-meta="id" content={articleId} />}
+    {!demoMode && <link rel="alternate" type="application/rss+xml" title={`EUC ROVER — ${lang.toUpperCase()}`} href={asset(`${lang}/rss.xml`)} />}
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t.skip}</a>
+    <Header lang={lang} view={view} alternate={alternate} />
+    {demoMode && <aside class="demo-banner" data-pagefind-ignore><div class="shell"><strong>{t.demo}</strong><span>{t.demoInfo}</span></div></aside>}
+    <main id="main" tabindex="-1"><slot /></main>
+    <Footer lang={lang} />
+    <div class="toast" role="status" aria-live="polite" aria-atomic="true" data-toast hidden></div>
+    <script is:inline id="site-data" type="application/json" set:html={json} />
+    <script>import '../scripts/site';</script>
+  </body>
+</html>

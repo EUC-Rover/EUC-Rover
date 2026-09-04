@@ -1,0 +1,33 @@
+---
+import Icon from './Icon.astro';
+import SaveButton from './SaveButton.astro';
+import { ui, type Lang } from '../i18n/ui';
+import { formatDate, formatNumber, categoryLabel, tagLabel, pageUrl, demoMode, type Publication } from '../lib/site';
+import { renderBody } from '../lib/markdown';
+interface Props { entry: Publication; lang: Lang }
+const { entry, lang } = Astro.props;
+const t = ui[lang];
+const { html, headings } = renderBody(entry[lang].body);
+const toc = [...(entry.metrics.length ? [{ id: 'trip-statistics', text: t.overview }] : []), ...headings];
+const canShare = !demoMode && !!Astro.site && Astro.site.hostname !== 'example.invalid';
+---
+<article class="shell article" data-pagefind-body>
+  <header class="article-header">
+    <a class="text-link article-back" href={pageUrl(lang, entry.type === 'trip' ? 'trips' : 'posts')} data-pagefind-ignore>← {entry.type === 'trip' ? t.backTrips : t.backPosts}</a>
+    <div class="card-meta"><span class="content-type">{t[entry.type]}</span>{entry.demo && <span>{t.sample}</span>}</div>
+    <h1 data-pagefind-meta="title">{entry[lang].title}</h1>
+    <p class="article-intro" data-pagefind-meta="description">{entry[lang].description}</p>
+    <div class="article-dates"><span>{t.published}: <time datetime={entry.publishedAt}>{formatDate(entry.publishedAt, lang)}</time></span>{entry.trip && <span>{t.tripDate}: <time datetime={entry.trip.start}>{formatDate(entry.trip.start, lang)}</time>{entry.trip.end && entry.trip.end !== entry.trip.start && <> — <time datetime={entry.trip.end}>{formatDate(entry.trip.end, lang)}</time></>}</span>}{entry.updatedAt && entry.updatedAt !== entry.publishedAt && <span>{t.updated}: <time datetime={entry.updatedAt}>{formatDate(entry.updatedAt, lang)}</time></span>}</div>
+    {entry.categoryIds.length > 0 && <ul class="tag-list">{entry.categoryIds.map(id => <li>{categoryLabel(id, lang)}</li>)}</ul>}
+    <div class="article-actions" data-pagefind-ignore><SaveButton id={entry.id} lang={lang}/>{canShare && <><button class="button button--quiet" type="button" data-copy-link><Icon name="copy" size={18}/>{t.copy}</button><button class="button button--quiet" type="button" data-share hidden><Icon name="share" size={18}/>{t.share}</button></>}</div>
+  </header>
+  <div class="article-layout">
+    <div class="article-main">
+      {toc.length > 1 && <details class="mobile-toc" data-pagefind-ignore><summary>{t.contents}<Icon name="chevron" size={18}/></summary><nav aria-label={t.contents}><ol>{toc.map(heading => <li><a href={`#${heading.id}`}>{heading.text}</a></li>)}</ol></nav></details>}
+      {entry.metrics.length > 0 && <section class="statistics" aria-labelledby="trip-statistics"><h2 id="trip-statistics">{t.overview}</h2><dl class="metric-grid">{[...entry.metrics].sort((a, b) => b.priority - a.priority).map(metric => <div class="metric"><dt>{metric.label[lang]}</dt><dd>{formatNumber(metric.value, metric.decimals, lang)} <span>{metric.unit}</span></dd></div>)}</dl></section>}
+      <div class="prose" set:html={html}/>
+      {entry.tagIds.length > 0 && <ul class="tag-list article-tags" aria-label={t.tag}>{entry.tagIds.map(id => <li>#{tagLabel(id, lang)}</li>)}</ul>}
+    </div>
+    {toc.length > 1 && <aside class="desktop-toc" data-pagefind-ignore><nav aria-label={t.contents}><h2>{t.contents}</h2><ol>{toc.map(heading => <li><a href={`#${heading.id}`}>{heading.text}</a></li>)}</ol></nav></aside>}
+  </div>
+</article>

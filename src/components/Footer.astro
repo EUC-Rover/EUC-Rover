@@ -1,0 +1,14 @@
+---
+import { ui, type Lang } from '../i18n/ui';
+import { asset, pageUrl } from '../lib/site';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div class="footer-identity"><img src={asset('brand/er.svg')} width="48" height="48" alt="EUC ROVER" loading="lazy" /><p>{t.footer}</p></div>
+    <nav aria-label={lang === 'lt' ? 'Poraštės nuorodos' : 'Footer links'}><a href={pageUrl(lang, 'about')}>{t.about}</a><a href={pageUrl(lang, 'privacy')}>{t.privacy}</a><a href="https://www.youtube.com/@eucrover" rel="me">YouTube</a></nav>
+    <div class="footer-bottom"><span>© {new Date().getFullYear()} EUC ROVER</span><a href="#top">{t.top} ↑</a></div>
+  </div>
+</footer>

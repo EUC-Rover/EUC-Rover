@@ -1,0 +1,38 @@
+---
+import PublicationCard from './PublicationCard.astro';
+import Icon from './Icon.astro';
+import { ui, type Lang } from '../i18n/ui';
+import { taxonomy, pageUrl, tagLabel, type Publication } from '../lib/site';
+interface Props { entries: Publication[]; lang: Lang; mode?: 'listing' | 'search' | 'saved' }
+const { entries, lang, mode = 'listing' } = Astro.props;
+const t = ui[lang];
+const usedCategories = taxonomy.categories.filter(category => entries.some(entry => entry.categoryIds.includes(category.id)));
+const usedTags = [...new Set(entries.flatMap(entry => entry.tagIds.map(id => tagLabel(id, lang))))];
+---
+<section class="collection" data-collection={mode} data-page-size="12">
+  {mode === 'search' && <form class="search-form" role="search" data-search-form>
+    <label for="search-query">{t.searchLabel}</label>
+    <div class="search-input-row"><input id="search-query" name="q" type="search" placeholder={t.searchPlaceholder} autocomplete="off" /><button class="button button--primary" type="submit"><Icon name="search"/>{t.searchButton}</button></div>
+  </form>}
+  {mode !== 'saved' && entries.length > 0 && <div class="filter-area">
+    <details class="filter-panel" open>
+      <summary><Icon name="filter" size={18} />{t.filter}<Icon name="chevron" size={18}/></summary>
+      <div class="filter-fields">
+        {mode === 'search' && <label>{t.type}<select data-filter="type"><option value="">{t.allTypes}</option><option value="post">{t.posts}</option><option value="trip">{t.trips}</option></select></label>}
+        {usedCategories.length > 0 && <label>{t.category}<select data-filter="category"><option value="">{t.all}</option>{taxonomy.groups.map(group => <optgroup label={group.label[lang]}>{usedCategories.filter(category => category.groupId === group.id).map(category => <option value={category.id}>{category.label[lang]}</option>)}</optgroup>)}</select></label>}
+        {usedTags.length > 0 && <label>{t.tag}<select data-filter="tag"><option value="">{t.all}</option>{usedTags.map(tag => <option value={tag}>{tag}</option>)}</select></label>}
+      </div>
+    </details>
+    <div class="filter-state"><p data-active-filters></p><button class="text-button" type="button" data-clear-filters hidden>{t.clear}</button></div>
+  </div>}
+  <p class="results-status" role="status" aria-live="polite" data-results-status></p>
+  <div class="publication-grid" data-results-grid hidden={mode === 'saved'}>{entries.map(entry => <PublicationCard entry={entry} lang={lang} />)}</div>
+  <div class="empty-state" data-empty-state hidden={entries.length > 0}>
+    <span class="empty-icon"><Icon name={mode === 'saved' ? 'bookmark' : 'search'} size={28}/></span>
+    <h2>{mode === 'saved' ? t.savedEmpty : t.noResults}</h2>
+    <p>{mode === 'saved' ? t.savedEmptyText : t.noResultsText}</p>
+    {mode === 'saved' && <a class="button button--primary" href={pageUrl(lang)}>{t.browse}<Icon name="arrow"/></a>}
+  </div>
+  <nav class="pagination" aria-label={t.pagination} data-pagination hidden></nav>
+  <noscript><p class="notice">{t.jsRequired}</p></noscript>
+</section>

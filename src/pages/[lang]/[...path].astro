@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Home from '../../components/Home.astro';
+import Collection from '../../components/Collection.astro';
+import Article from '../../components/Article.astro';
+import { ui, languages, segments, type Lang, type View } from '../../i18n/ui';
+import { entries, allPagePaths, alternateLang, articleUrl, pageUrl, demoMode, type Publication } from '../../lib/site';
+
+export function getStaticPaths() {
+  const pages = allPagePaths().map(({ lang, view, path }) => ({ params: { lang, path }, props: { lang, view } }));
+  const articles = languages.flatMap(lang => entries.map(entry => ({ params: { lang, path: `${segments[lang][entry.type === 'trip' ? 'trips' : 'posts']}/${entry.slug}` }, props: { lang, view: entry.type === 'trip' ? 'trips' : 'posts', entry } })));
+  return [...pages, ...articles];
+}
+interface Props { lang: Lang; view: View; entry?: Publication }
+const { lang, view, entry } = Astro.props;
+const t = ui[lang];
+const alternate = entry ? articleUrl(entry, alternateLang(lang)) : pageUrl(alternateLang(lang), view);
+const title = entry ? entry[lang].title : view === 'home' ? 'EUC ROVER' : t[view];
+const description = entry ? entry[lang].description : t.intro;
+const listingEntries = entries.filter(item => view === 'posts' ? item.type === 'post' : view === 'trips' ? item.type === 'trip' : true);
+---
+<BaseLayout lang={lang} view={view} title={title} description={description} alternate={alternate} articleId={entry?.id}>
+  {entry ? <Article entry={entry} lang={lang} /> : view === 'home' ? <Home lang={lang} /> : <div class="shell page-content" data-pagefind-ignore>
+    <header class="page-heading"><p class="eyebrow">EUC ROVER</p><h1>{t[view]}</h1>{view === 'posts' && <p>{t.postsIntro}</p>}{view === 'trips' && <p>{t.tripsIntro}</p>}{view === 'search' && <p>{t.searchIntro}</p>}{view === 'saved' && <p>{t.savedIntro}</p>}</header>
+    {(view === 'posts' || view === 'trips') && <Collection entries={listingEntries} lang={lang} />}
+    {view === 'search' && <Collection entries={entries} lang={lang} mode="search" />}
+    {view === 'saved' && <><Collection entries={entries} lang={lang} mode="saved" /><p class="reading-note">{t.savedNote}</p></>}
+    {view === 'about' && <section class="prose about-copy"><h2>{t.aboutPending}</h2><p>{t.aboutText}</p>{demoMode && <p class="notice">{t.aboutDemoNote}</p>}</section>}
+    {view === 'privacy' && <section class="prose"><h2>{t.privacyTitle}</h2><p>{t.privacyIntro}</p><p>{t.privacyStorage}</p><p>{t.privacyDelete}</p><p>{t.privacyFuture}</p></section>}
+  </div>}
+</BaseLayout>

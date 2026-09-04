@@ -1,0 +1,16 @@
+---
+interface Props { name: 'search' | 'bookmark' | 'arrow' | 'menu' | 'close' | 'copy' | 'share' | 'chevron' | 'filter'; size?: number }
+const { name, size = 20 } = Astro.props;
+const paths = {
+  search: 'M21 21l-5.2-5.2M19 10.5a8.5 8.5 0 1 1-17 0 8.5 8.5 0 0 1 17 0Z',
+  bookmark: 'M6 3h12v18l-6-4-6 4V3Z',
+  arrow: 'M4 12h16m-6-6 6 6-6 6',
+  menu: 'M3 6h18M3 12h18M3 18h18',
+  close: 'm5 5 14 14M19 5 5 19',
+  copy: 'M9 9h12v12H9V9ZM15 9V3H3v12h6',
+  share: 'M12 16V3m-5 5 5-5 5 5M4 13v8h16v-8',
+  chevron: 'm6 9 6 6 6-6',
+  filter: 'M3 6h18M6 12h12M9 18h6',
+};
+---
+<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d={paths[name]} /></svg>

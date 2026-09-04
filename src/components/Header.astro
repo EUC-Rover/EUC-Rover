@@ -1,0 +1,32 @@
+---
+import Icon from './Icon.astro';
+import { ui, type Lang, type View } from '../i18n/ui';
+import { asset, pageUrl } from '../lib/site';
+interface Props { lang: Lang; view?: View; alternate: string }
+const { lang, view = 'home', alternate } = Astro.props;
+const t = ui[lang];
+const nav: View[] = ['home', 'posts', 'trips', 'about'];
+const currentLanguageUrl = /\/404(?:\/|\.html)?$/.test(Astro.url.pathname) ? pageUrl(lang) : Astro.url.pathname;
+---
+<header class="site-header" id="top">
+  <div class="header-inner shell">
+    <a class="brand" href={pageUrl(lang)} aria-label={`EUC ROVER — ${t.home}`}>
+      <img src={asset('brand/euc-rover-horizontal.svg')} width="653" height="69.5" alt="EUC ROVER" fetchpriority="high" />
+    </a>
+    <button class="nav-toggle button button--quiet" type="button" aria-expanded="false" aria-controls="primary-nav" data-menu-toggle>
+      <Icon name="menu" /><span data-menu-label>{t.menu}</span>
+    </button>
+    <nav class="primary-nav" id="primary-nav" aria-label={t.navigation}>
+      {nav.map(item => <a href={pageUrl(lang, item)} aria-current={view === item ? 'page' : undefined}>{t[item]}</a>)}
+    </nav>
+    <div class="header-tools">
+      <div class="utility-links">
+        <a class="utility-link" href={pageUrl(lang, 'search')} aria-label={t.search} aria-current={view === 'search' ? 'page' : undefined} title={t.search}><Icon name="search" /><span class="utility-label">{t.search}</span></a>
+        <a class="utility-link" href={pageUrl(lang, 'saved')} aria-label={t.saved} aria-current={view === 'saved' ? 'page' : undefined} title={t.saved}><Icon name="bookmark" /><span class="saved-count" data-saved-count hidden>0</span><span class="utility-label">{t.saved}</span></a>
+      </div>
+      <nav class="language-switch" aria-label={t.language}>
+        {(['lt', 'en'] as const).map(value => <a href={value === lang ? currentLanguageUrl : alternate} lang={value} hreflang={value} aria-current={value === lang ? 'true' : undefined} data-language={value}>{value.toUpperCase()}</a>)}
+      </nav>
+    </div>
+  </div>
+</header>

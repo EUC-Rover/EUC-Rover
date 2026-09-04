@@ -1,0 +1,21 @@
+---
+import PublicationCard from './PublicationCard.astro';
+import Icon from './Icon.astro';
+import { ui, type Lang } from '../i18n/ui';
+import { entries, asset, pageUrl } from '../lib/site';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const latest = entries.slice(0, 5);
+---
+<div class="shell" data-pagefind-ignore>
+  <section class="home-intro" aria-labelledby="home-title">
+    <div class="home-intro-copy"><h1 id="home-title" lang="en"><span>FROM STREETS AND STRESS</span><span>TO TRAILS AND TALES</span></h1><p>{t.intro}</p></div>
+    <div class="home-intro-art" aria-hidden="true"><img src={asset('brand/tire.svg')} width="1600" height="560" alt="" /></div>
+  </section>
+  <section class="latest-section" aria-labelledby="latest-heading">
+    <div class="section-heading"><div><p class="eyebrow">{t.latestLabel}</p><h2 id="latest-heading">{t.latest}</h2></div><span class="section-count" aria-hidden="true">{String(latest.length).padStart(2, '0')}</span></div>
+    {latest.length > 0 ? <div class="publication-grid publication-grid--home">{latest.map((entry, index) => <PublicationCard entry={entry} lang={lang} featured={index === 0} />)}</div> : <div class="empty-state"><h3>{t.noPosts}</h3><p>{t.noPostsText}</p></div>}
+    <div class="browse-links"><a class="button button--outline" href={pageUrl(lang, 'posts')}>{t.allPosts}<Icon name="arrow" /></a><a class="button button--outline" href={pageUrl(lang, 'trips')}>{t.allTrips}<Icon name="arrow" /></a></div>
+  </section>
+</div>

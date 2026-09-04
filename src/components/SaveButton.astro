@@ -1,0 +1,9 @@
+---
+import Icon from './Icon.astro';
+import { ui, type Lang } from '../i18n/ui';
+interface Props { id: string; lang: Lang; compact?: boolean }
+const { id, lang, compact = false } = Astro.props;
+---
+<button class:list={['save-button', { 'save-button--compact': compact }]} type="button" data-save-id={id} aria-pressed="false" aria-label={ui[lang].save} title={ui[lang].save}>
+  <Icon name="bookmark" size={18} /><span data-save-label class:list={{ 'sr-only': compact }}>{ui[lang].save}</span>
+</button>

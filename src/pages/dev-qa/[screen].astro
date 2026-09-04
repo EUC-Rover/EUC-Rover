@@ -1,0 +1,21 @@
+---
+// A development-only viewport fixture. No dev-qa route is generated in either build.
+export function getStaticPaths() { return import.meta.env.DEV ? ['viewport', 'trip', 'en-home', 'en-trip', 'search'].map(screen => ({ params: { screen } })) : []; }
+const fixtures: Record<string, string> = { trip: '/lt/keliones/demo-forest-loop/', 'en-home': '/en/', 'en-trip': '/en/trips/demo-forest-loop/', search: '/lt/paieska/' };
+const initial = fixtures[Astro.params.screen || ''] || '/lt/';
+---
+<!doctype html><html lang="lt"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex,nofollow"/><title>EUC ROVER — išdėstymo patikra</title>
+<style>body{margin:0;background:#292b31;color:#fdf2ec;font:14px Arial,sans-serif}header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:12px;position:sticky;top:0;z-index:1;background:#292b31}label{display:flex;gap:6px;align-items:center}select{font:inherit;padding:6px}main{padding:12px;overflow:auto}iframe{display:block;height:920px;border:1px solid #666;background:#111217;margin:0 auto}p{margin:0}a{color:#ffae7a}</style></head>
+<body><header><strong>Patikros stendas</strong><label>Plotis<select id="qa-width"><option>320</option><option selected>390</option><option>568</option><option>768</option><option>1024</option><option>1280</option><option>1440</option></select></label><label>Tekstas<select id="qa-font"><option value="100">100 %</option><option value="200">200 %</option></select></label><label>Puslapis<select id="qa-page"><option value="/lt/">LT · pradžia</option><option value="/en/">EN · home</option><option value="/lt/keliones/demo-forest-loop/">LT · kelionė</option><option value="/en/trips/demo-forest-loop/">EN · trip</option><option value="/lt/irasai/">LT · įrašai</option><option value="/lt/keliones/">LT · kelionės</option><option value="/lt/paieska/">LT · paieška</option><option value="/en/search/">EN · search</option><option value="/lt/skaityti-veliau/">LT · skaityti vėliau</option><option value="/lt/apie-mane/">LT · apie mane</option></select></label><p>Naršyklės plotis; tai nėra tikro telefono bandymas.</p></header><main><iframe id="qa-frame" title="Svetainės peržiūra" src={initial} width="390" height="920"></iframe></main>
+<script>
+  const frame = document.querySelector<HTMLIFrameElement>('#qa-frame')!;
+  const width = document.querySelector<HTMLSelectElement>('#qa-width')!;
+  const font = document.querySelector<HTMLSelectElement>('#qa-font')!;
+  const page = document.querySelector<HTMLSelectElement>('#qa-page')!;
+  page.value = frame.getAttribute('src') || '/lt/';
+  const applyFont = () => { if (frame.contentDocument) frame.contentDocument.documentElement.style.fontSize = `${font.value}%`; };
+  width.addEventListener('change', () => { frame.width = width.value; });
+  font.addEventListener('change', applyFont);
+  page.addEventListener('change', () => { frame.src = page.value; });
+  frame.addEventListener('load', applyFont);
+</script></body></html>

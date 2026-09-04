@@ -1,0 +1,21 @@
+---
+import Icon from './Icon.astro';
+import SaveButton from './SaveButton.astro';
+import { ui, type Lang } from '../i18n/ui';
+import { articleUrl, categoryLabel, formatDate, formatNumber, type Publication } from '../lib/site';
+interface Props { entry: Publication; lang: Lang; featured?: boolean }
+const { entry, lang, featured = false } = Astro.props;
+const t = ui[lang];
+const metrics = entry.metrics.filter(metric => ['distance', 'duration', 'ascent'].includes(metric.id)).sort((a, b) => b.priority - a.priority).slice(0, 3);
+---
+<article class:list={['publication-card', { 'publication-card--featured': featured }]} data-entry-id={entry.id}>
+  <div class="card-copy">
+    <div class="card-meta"><span class="content-type">{t[entry.type]}</span><span>{t.published} <time datetime={entry.publishedAt}>{formatDate(entry.publishedAt, lang)}</time></span></div>
+    <h3><a href={articleUrl(entry, lang)}>{entry[lang].title}</a></h3>
+    <p class="card-description">{entry[lang].description}</p>
+    {entry.trip && <p class="trip-date">{t.tripDate}: <time datetime={entry.trip.start}>{formatDate(entry.trip.start, lang)}</time>{entry.trip.end && entry.trip.end !== entry.trip.start && <> — <time datetime={entry.trip.end}>{formatDate(entry.trip.end, lang)}</time></>}</p>}
+    {entry.categoryIds.length > 0 && <ul class="tag-list" aria-label={t.category}>{entry.categoryIds.map(id => <li>{categoryLabel(id, lang)}</li>)}</ul>}
+    <div class="card-actions"><a class="text-link" href={articleUrl(entry, lang)}>{t.read}<Icon name="arrow" size={18}/></a><SaveButton id={entry.id} lang={lang} /></div>
+  </div>
+  {metrics.length > 0 && <dl class="card-metrics">{metrics.map(metric => <div><dt>{metric.label[lang]}</dt><dd>{formatNumber(metric.value, metric.decimals, lang)} <span>{metric.unit}</span></dd></div>)}</dl>}
+</article>
