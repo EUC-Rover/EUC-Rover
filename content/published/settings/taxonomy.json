@@ -1,0 +1,76 @@
+{
+  "groups": [
+    {
+      "id": "environment",
+      "label": {
+        "lt": "Aplinka",
+        "en": "Environment"
+      }
+    },
+    {
+      "id": "company",
+      "label": {
+        "lt": "Kompanija",
+        "en": "Company"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": "city",
+      "groupId": "environment",
+      "label": {
+        "lt": "Miesto pasivažinėjimas",
+        "en": "City ride"
+      }
+    },
+    {
+      "id": "forest",
+      "groupId": "environment",
+      "label": {
+        "lt": "Miško pasivažinėjimas",
+        "en": "Forest ride"
+      }
+    },
+    {
+      "id": "journey",
+      "groupId": "environment",
+      "label": {
+        "lt": "Kelionės",
+        "en": "A-to-B journeys"
+      }
+    },
+    {
+      "id": "solo",
+      "groupId": "company",
+      "label": {
+        "lt": "Solo pasivažinėjimas",
+        "en": "Solo ride"
+      }
+    },
+    {
+      "id": "group",
+      "groupId": "company",
+      "label": {
+        "lt": "Kompanijos pasivažinėjimas",
+        "en": "Group ride"
+      }
+    }
+  ],
+  "tags": [
+    {
+      "id": "sample-route",
+      "label": {
+        "lt": "Bandomasis maršrutas",
+        "en": "Sample route"
+      }
+    },
+    {
+      "id": "notes",
+      "label": {
+        "lt": "Užrašai",
+        "en": "Notes"
+      }
+    }
+  ]
+}

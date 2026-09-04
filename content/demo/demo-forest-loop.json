@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "demo": true,
+  "updatedAt": "2026-09-03T08:00:00Z",
+  "categoryIds": [
+    "forest",
+    "solo"
+  ],
+  "metrics": [
+    {
+      "id": "distance",
+      "label": {
+        "lt": "Atstumas",
+        "en": "Distance"
+      },
+      "value": 42.8,
+      "unit": "km",
+      "decimals": 1,
+      "priority": 3
+    },
+    {
+      "id": "duration",
+      "label": {
+        "lt": "Bendra trukmė",
+        "en": "Total duration"
+      },
+      "value": 2.5,
+      "unit": "h",
+      "decimals": 1,
+      "priority": 2
+    },
+    {
+      "id": "ascent",
+      "label": {
+        "lt": "Sukauptas sukilimas",
+        "en": "Accumulated ascent"
+      },
+      "value": 286,
+      "unit": "m",
+      "decimals": 0,
+      "priority": 1
+    }
+  ],
+  "id": "demo-forest-loop",
+  "slug": "demo-forest-loop",
+  "type": "trip",
+  "publishedAt": "2026-09-03T08:00:00Z",
+  "trip": {
+    "start": "2026-09-01",
+    "timezone": "Europe/Vilnius"
+  },
+  "lt": {
+    "title": "Nuo miesto gatvių iki miško takų",
+    "description": "Bandomasis kelionės straipsnis: ilgesnis pasakojimas, atskiros datos ir aiškiai pateikti rodikliai.",
+    "body": "## Pasakojimas\n\nTai maketo peržiūrai skirtas tekstas. Jis neaprašo tikros kelionės, o pateikti skaičiai yra sintetiniai. Šiame pavyzdyje galima įvertinti, kaip skaitomas ilgesnis tekstas ir kaip šalia jo atrodo kelionės duomenys.\n\nKelionės pasakojimas turės savo ritmą: pradžią, maršruto įspūdžius, pastebėjimus ir pabaigą. Nuotraukos papildys konkrečią istoriją tada, kai bus parinkti tikri, viešinimui paruošti kadrai.\n\n## Kelionės eiga\n\nŠioje dalyje atsiras tai, kas svarbu konkrečiam maršrutui: dangos kaita, įdomios vietos, sustojimai ir sąlygos. Faktai bus grindžiami savininko pasakojimu ir patikrintais šaltiniais.\n\n- Kelionės data atskiriama nuo publikavimo datos.\n- Rodikliai abiem kalbomis išlieka tie patys.\n- Skyriai pasiekiami straipsnio turinio nuorodomis.\n\n## Išvados\n\nŠis pavyzdys leidžia patikrinti skaitymą telefone, kalbos perjungimą ir straipsnio išsaugojimą vėlesniam skaitymui. Jis nėra tikros kelionės analizė.\n\n## Šaltiniai\n\nVisi šio pavyzdžio tekstai ir rodikliai sukurti svetainės maketui patikrinti. GPX, telemetrijos ar asmeninės kelionės šaltiniai nenaudoti."
+  },
+  "en": {
+    "title": "From city streets to forest trails",
+    "description": "A sample trip article with a longer narrative, separate dates and clearly presented figures.",
+    "body": "## The story\n\nThis text is provided to review the layout. It does not describe a real trip, and its figures are synthetic. The example lets you assess how a longer story reads alongside trip data.\n\nEach trip story will have its own rhythm: a beginning, impressions from the route, observations and a conclusion. Photographs will accompany the actual story once genuine, publication-ready images have been selected.\n\n## Along the route\n\nThis section will cover what matters to the particular route: changing surfaces, interesting places, stops and conditions. Facts will be based on the owner’s account and checked sources.\n\n- The trip date is separate from the publication date.\n- Figures remain the same in both languages.\n- The article contents link directly to its sections.\n\n## Conclusions\n\nThis example lets you check reading on a phone, switching languages and saving an article for later. It is not an analysis of a real trip.\n\n## Sources\n\nAll text and figures in this example were created to test the website layout. No GPX, telemetry or personal trip sources were used."
+  },
+  "tagIds": [
+    "sample-route"
+  ]
+}

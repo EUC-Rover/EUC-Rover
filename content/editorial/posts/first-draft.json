@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "first-draft",
+  "slug": "first-draft",
+  "type": "post",
+  "status": "draft",
+  "lt": {
+    "title": "Pirmas juodraštis",
+    "description": "",
+    "body": ""
+  },
+  "en": {
+    "title": "",
+    "description": "",
+    "body": ""
+  },
+  "categoryIds": [],
+  "metrics": [],
+  "tagIds": []
+}

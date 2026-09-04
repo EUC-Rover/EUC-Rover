@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "demo": true,
+  "updatedAt": "2026-09-03T08:00:00Z",
+  "categoryIds": [],
+  "metrics": [],
+  "id": "demo-field-notes",
+  "slug": "demo-field-notes",
+  "type": "post",
+  "publishedAt": "2026-09-02T08:00:00Z",
+  "lt": {
+    "title": "Kas lieka už maršruto ribų",
+    "description": "Bandomasis bendro įrašo maketas — mintims, patirtims ir technologijų temoms.",
+    "body": "## Užrašai po kelionės\n\nTai bandomasis įrašas, skirtas svetainės tipografijai ir skaitymo patogumui peržiūrėti. Jis neperteikia savininko asmeninių patirčių ar nuomonės.\n\nBendras įrašas gali būti trumpas pastebėjimas ar ilgesnis tekstas. Jam nereikia kelionės datos ar išgalvotų rodiklių: puslapis prisitaiko prie to, kas iš tikrųjų parašyta.\n\n## Vieta ilgesnei minčiai\n\nAiškios antraštės ir patogus eilučių ilgis leidžia išlaikyti dėmesį. Telefone pasakojimas eina vienu stulpeliu, o jo tekstas lieka tokio pat skaitomo dydžio.\n\nŠį įrašą galima išsaugoti skaityti vėliau ir perjungti į anglų kalbą neprarandant publikacijos tapatybės."
+  },
+  "en": {
+    "title": "Beyond the route",
+    "description": "A sample general post for thoughts, experiences and technology topics.",
+    "body": "## Notes after the ride\n\nThis sample post is provided to review the website’s typography and reading experience. It does not represent the owner’s personal experiences or opinions.\n\nA general post can be a brief observation or a longer piece. It needs neither a trip date nor invented metrics: the page adapts to the content that actually exists.\n\n## Room for a longer thought\n\nClear headings and a comfortable line length help readers stay with the story. On a phone, the narrative follows one column while keeping the same readable text size.\n\nYou can save this post for later and switch to Lithuanian without losing the publication’s identity."
+  },
+  "tagIds": [
+    "notes"
+  ]
+}
