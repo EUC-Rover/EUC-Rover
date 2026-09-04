@@ -1,0 +1,392 @@
+# EUC ROVER v0.1 — saving edits does not publish them.
+media:
+  input: assets/media
+  output: /media
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  - avif
+content:
+- name: posts
+  label: Įrašai
+  type: collection
+  path: content/editorial/posts
+  format: json
+  filename: '{fields.id}.json'
+  view:
+    primary: id
+    fields:
+    - id
+    - status
+  fields:
+  - name: schemaVersion
+    label: Schemos versija
+    type: number
+    default: 1
+    hidden: true
+  - name: id
+    label: Nekintamas ID
+    type: string
+    required: true
+  - name: slug
+    label: URL identifikatorius
+    type: string
+    required: true
+  - name: type
+    label: Turinio tipas
+    type: string
+    default: post
+    hidden: true
+  - name: status
+    label: Redakcijos būsena
+    type: select
+    default: draft
+    options:
+      values:
+      - value: draft
+        label: Juodraštis
+      - value: ready
+        label: Paruošta patikrai
+  - name: publishedAt
+    label: Pirmą kartą publikuota (ISO su laiko juosta)
+    type: string
+  - name: updatedAt
+    label: Atnaujinta (ISO su laiko juosta)
+    type: string
+  - name: lt
+    label: LT tekstai
+    type: object
+    fields:
+    - name: title
+      label: Pavadinimas
+      type: string
+    - name: description
+      label: Trumpas pristatymas
+      type: text
+    - name: body
+      label: Turinys
+      type: rich-text
+  - name: en
+    label: EN tekstai
+    type: object
+    fields:
+    - name: title
+      label: Pavadinimas
+      type: string
+    - name: description
+      label: Trumpas pristatymas
+      type: text
+    - name: body
+      label: Turinys
+      type: rich-text
+  - name: categoryIds
+    label: Kategorijų ID
+    type: string
+    list: true
+    description: Naudok stabilius ID iš Kategorijų skyriaus.
+  - name: tagIds
+    label: Žymų ID
+    type: string
+    list: true
+    description: Naudok stabilius ID iš Žymų sąrašo.
+  - name: metrics
+    label: Bendri rodikliai
+    type: object
+    list: true
+    fields:
+    - name: id
+      label: Rodiklio ID
+      type: string
+    - name: label
+      label: Pavadinimas
+      type: object
+      fields:
+      - name: lt
+        label: Lietuviškai
+        type: string
+      - name: en
+        label: Angliškai
+        type: string
+    - name: value
+      label: Reikšmė
+      type: number
+    - name: unit
+      label: Vienetas
+      type: select
+      options:
+        values:
+        - km
+        - m
+        - h
+        - min
+        - km/h
+        - Wh
+        - Wh/km
+        - '%'
+        - °C
+    - name: decimals
+      label: Skaitmenys po kablelio
+      type: number
+      default: 0
+    - name: priority
+      label: Akcentavimo prioritetas
+      type: number
+      default: 0
+- name: trips
+  label: Kelionės
+  type: collection
+  path: content/editorial/trips
+  format: json
+  filename: '{fields.id}.json'
+  view:
+    primary: id
+    fields:
+    - id
+    - status
+  fields:
+  - name: schemaVersion
+    label: Schemos versija
+    type: number
+    default: 1
+    hidden: true
+  - name: id
+    label: Nekintamas ID
+    type: string
+    required: true
+  - name: slug
+    label: URL identifikatorius
+    type: string
+    required: true
+  - name: type
+    label: Turinio tipas
+    type: string
+    default: trip
+    hidden: true
+  - name: status
+    label: Redakcijos būsena
+    type: select
+    default: draft
+    options:
+      values:
+      - value: draft
+        label: Juodraštis
+      - value: ready
+        label: Paruošta patikrai
+  - name: publishedAt
+    label: Pirmą kartą publikuota (ISO su laiko juosta)
+    type: string
+  - name: updatedAt
+    label: Atnaujinta (ISO su laiko juosta)
+    type: string
+  - name: trip
+    label: Kelionės datos
+    type: object
+    fields:
+    - name: start
+      label: Pradžia (YYYY-MM-DD)
+      type: string
+    - name: end
+      label: Pabaiga, jei kelių dienų (YYYY-MM-DD)
+      type: string
+    - name: timezone
+      label: IANA laiko juosta
+      type: string
+      default: Europe/Vilnius
+  - name: lt
+    label: LT tekstai
+    type: object
+    fields:
+    - name: title
+      label: Pavadinimas
+      type: string
+    - name: description
+      label: Trumpas pristatymas
+      type: text
+    - name: body
+      label: Turinys
+      type: rich-text
+  - name: en
+    label: EN tekstai
+    type: object
+    fields:
+    - name: title
+      label: Pavadinimas
+      type: string
+    - name: description
+      label: Trumpas pristatymas
+      type: text
+    - name: body
+      label: Turinys
+      type: rich-text
+  - name: categoryIds
+    label: Kategorijų ID
+    type: string
+    list: true
+    description: Naudok stabilius ID iš Kategorijų skyriaus.
+  - name: tagIds
+    label: Žymų ID
+    type: string
+    list: true
+    description: Naudok stabilius ID iš Žymų sąrašo.
+  - name: metrics
+    label: Bendri rodikliai
+    type: object
+    list: true
+    fields:
+    - name: id
+      label: Rodiklio ID
+      type: string
+    - name: label
+      label: Pavadinimas
+      type: object
+      fields:
+      - name: lt
+        label: Lietuviškai
+        type: string
+      - name: en
+        label: Angliškai
+        type: string
+    - name: value
+      label: Reikšmė
+      type: number
+    - name: unit
+      label: Vienetas
+      type: select
+      options:
+        values:
+        - km
+        - m
+        - h
+        - min
+        - km/h
+        - Wh
+        - Wh/km
+        - '%'
+        - °C
+    - name: decimals
+      label: Skaitmenys po kablelio
+      type: number
+      default: 0
+    - name: priority
+      label: Akcentavimo prioritetas
+      type: number
+      default: 0
+- name: about
+  label: Apie mane
+  type: file
+  path: content/editorial/settings/about.json
+  format: json
+  fields:
+  - name: lt
+    label: Lietuviškai
+    type: object
+    fields:
+    - name: title
+      label: Pavadinimas
+      type: string
+    - name: body
+      label: Turinys
+      type: rich-text
+  - name: en
+    label: Angliškai
+    type: object
+    fields:
+    - name: title
+      label: Title
+      type: string
+    - name: body
+      label: Content
+      type: rich-text
+- name: site
+  label: Svetainės nuostatos
+  type: file
+  path: content/editorial/settings/site.json
+  format: json
+  fields:
+  - name: name
+    label: Pavadinimas
+    type: string
+  - name: lt
+    label: LT
+    type: object
+    fields:
+    - name: intro
+      label: Trumpas apibūdinimas
+      type: text
+  - name: en
+    label: EN
+    type: object
+    fields:
+    - name: intro
+      label: Short description
+      type: text
+  - name: subscriptionEnabled
+    label: Prenumerata prijungta
+    type: boolean
+    default: false
+    readonly: true
+- name: taxonomy
+  label: Kategorijos, grupės ir žymos
+  type: file
+  path: content/editorial/settings/taxonomy.json
+  format: json
+  fields:
+  - name: groups
+    label: Grupės
+    type: object
+    list: true
+    fields:
+    - name: id
+      label: Nekintamas ID
+      type: string
+    - name: label
+      label: Pavadinimai
+      type: object
+      fields:
+      - name: lt
+        label: Lietuviškai
+        type: string
+      - name: en
+        label: Angliškai
+        type: string
+  - name: categories
+    label: Kategorijos
+    type: object
+    list: true
+    fields:
+    - name: id
+      label: Nekintamas ID
+      type: string
+    - name: groupId
+      label: Grupės ID
+      type: string
+    - name: label
+      label: Pavadinimai
+      type: object
+      fields:
+      - name: lt
+        label: Lietuviškai
+        type: string
+      - name: en
+        label: Angliškai
+        type: string
+  - name: tags
+    label: Žymos
+    type: object
+    list: true
+    fields:
+    - name: id
+      label: Nekintamas ID
+      type: string
+    - name: label
+      label: Pavadinimai
+      type: object
+      fields:
+      - name: lt
+        label: Lietuviškai
+        type: string
+      - name: en
+        label: Angliškai
+        type: string
